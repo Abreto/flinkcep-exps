@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+ROOT="$(dirname $(realpath "${BASH_SOURCE[@]}"))"
+echo root_dir: $ROOT
+
+JAVA_HOME="$ROOT/jdk-11.0.15"
+echo java_home: $JAVA_HOME
+
+FLINK_HOME="$ROOT/flink-1.14.5"
+echo flink_home: $FLINK_HOME
+
+MAVEN_HOME="$ROOT/apache-maven-3.2.5"
+echo maven_home: $MAVEN_HOME
+
+PATH="$JAVA_HOME/bin:$PATH"
+PATH="$FLINK_HOME/bin:$PATH"
+PATH="$MAVEN_HOME/bin:$PATH"
+
+export JAVA_HOME PATH
+
+unset ROOT
