@@ -2,10 +2,19 @@
 
 ENV_DIR=env
 TARBALL_DIR=tarballs/
+COS_BASE_URL="https://flinkcep-1252312351.cos.ap-beijing.myqcloud.com/tarballs/"
+
+download_and_extract() {
+    # download (if not exists) and extract $1
+    mkdir -p "$TARBALL_DIR"
+    local tarball="$TARBALL_DIR$1"
+    [ -f "$tarball" ] || curl -L "$COS_BASE_URL$1" -o "$tarball"
+    tar -xzf "$tarball"
+}
 
 extract_if_not_exists() {
     # extract $2 if $1 not exists
-    [ -d "$1" ] || tar -xzf "$TARBALL_DIR$2"
+    [ -d "$1" ] || download_and_extract $2
 }
 
 cd "$ENV_DIR"
