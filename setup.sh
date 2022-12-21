@@ -17,7 +17,10 @@ extract_if_not_exists() {
     [ -d "$1" ] || download_and_extract $2
 }
 
-cd "$ENV_DIR"
-extract_if_not_exists apache-maven-3.2.5 apache-maven-3.2.5-bin.tar.gz
-extract_if_not_exists flink-1.14.5 flink-1.14.5-bin-scala_2.12.tgz
-extract_if_not_exists jdk-11.0.15 jdk-11.0.15_linux-x64_bin.tar.gz
+(cd "$ENV_DIR" ;
+extract_if_not_exists apache-maven-3.2.5 apache-maven-3.2.5-bin.tar.gz ;
+extract_if_not_exists flink-1.14.5 flink-1.14.5-bin-scala_2.12.tgz ;
+extract_if_not_exists jdk-11.0.15 jdk-11.0.15_linux-x64_bin.tar.gz ;
+)
+
+pip3 install -e reflinkcep/
